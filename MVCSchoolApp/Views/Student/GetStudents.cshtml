@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MVCSchoolApp.Models.Student>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Date Of Birth</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach(var student in Model)
+       {
+           <tr>
+               <td>@student.FirstName</td>
+               <td>@student.LastName</td>
+               <td>@student.DateOfBirth</td>
+               <td>@student.Email</td>
+               <td>@student.Phone</td>
+           </tr>
+       }
+    </tbody>
+</table>
+

@@ -77,3 +77,9 @@ C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.csproj.CoreCompileInputs.cac
 C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.csproj.CopyComplete
 C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.dll
 C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.pdb
+C:\MVCSchoolApp\MVCSchoolApp\bin\EntityFramework.dll
+C:\MVCSchoolApp\MVCSchoolApp\bin\EntityFramework.SqlServer.dll
+C:\MVCSchoolApp\MVCSchoolApp\bin\EntityFramework.xml
+C:\MVCSchoolApp\MVCSchoolApp\bin\EntityFramework.SqlServer.xml
+C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.Migrations.Initial.resources
+C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.csproj.GenerateResource.cache
