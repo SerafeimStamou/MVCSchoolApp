@@ -5,15 +5,19 @@ namespace MVCSchoolApp.DataAccess
 {
     public class DataAccess
     {
-        public static MVCSchoolAppContext DbContextInitialize()
-        {
-            MVCSchoolAppContext context;
-            return context = new MVCSchoolAppContext();
-        }
-
         public static IEnumerable<T> Read<T>(T model) where T:class
         {
-            return DbContextInitialize().Set<T>();
+            MVCSchoolAppContext context = new MVCSchoolAppContext();
+
+            return context.Set<T>();
+        }
+
+        public static void Create<T>(T model) where T:class
+        {
+            MVCSchoolAppContext context = new MVCSchoolAppContext();
+
+            context.Set<T>().Add(model);
+            context.SaveChanges();
         }
     }
 }
