@@ -1,6 +1,7 @@
 ﻿using MVCSchoolApp.Models;
 using System.Web.Mvc;
 using static MVCSchoolApp.DataAccess.DataAccess;
+using static MVCSchoolApp.Helpers.Helper;
 
 
 namespace MVCSchoolApp.Controllers
@@ -15,18 +16,42 @@ namespace MVCSchoolApp.Controllers
             return View(students);
         }
 
-        public ActionResult LoadForm()
+        public ActionResult LoadForm(int? id)
         {
-            return View(student);
+            var studentById = context.Students.Find(id);
+
+            if (studentById is null)
+                return View(student);
+            else
+                return View(studentById);
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Insert(Student formData)
         {
-            if(formData.ID is 0)
-            Create(formData);
-           
+            if (formData.ID is 0)
+            {
+                Create(formData);
+            }
+            else
+            {
+                var studentFromDb = context.Students.Find(formData.ID);
+
+                UpdateModel(studentFromDb, "",LoadStudentProperties());
+            }
+
+            context.SaveChanges();
+
+            return RedirectToAction("GetStudents");
+        }
+
+        public ActionResult Remove(int id)
+        {
+            Delete<Student>(id);
+            context.SaveChanges();
+
             return RedirectToAction("GetStudents");
         }
     }

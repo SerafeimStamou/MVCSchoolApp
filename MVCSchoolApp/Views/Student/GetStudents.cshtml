@@ -8,18 +8,22 @@
             <th>Date Of Birth</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Actions</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
        @foreach(var student in Model)
        {
-           <tr>
-               <td>@student.FirstName</td>
-               <td>@student.LastName</td>
-               <td>@student.DateOfBirth</td>
-               <td>@student.Email</td>
-               <td>@student.Phone</td>
-           </tr>
+        <tr>
+            <td>@student.FirstName</td>
+            <td>@student.LastName</td>
+            <td>@student.DateOfBirth</td>
+            <td>@student.Email</td>
+            <td>@student.Phone</td>
+            <td>@Html.ActionLink("Edit", "LoadForm", new { id = student.ID })</td>
+            <td>@Html.ActionLink("Delete", "Remove", new { id = student.ID })</td>
+        </tr>
        }
     </tbody>
 </table>

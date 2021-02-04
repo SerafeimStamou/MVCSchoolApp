@@ -1,23 +1,25 @@
 ﻿using System.Collections.Generic;
 
-
 namespace MVCSchoolApp.DataAccess
 {
     public class DataAccess
     {
+        public static MVCSchoolAppContext context = new MVCSchoolAppContext();
+
         public static IEnumerable<T> Read<T>(T model) where T:class
         {
-            MVCSchoolAppContext context = new MVCSchoolAppContext();
-
-            return context.Set<T>();
+          return context.Set<T>();
         }
 
         public static void Create<T>(T model) where T:class
         {
-            MVCSchoolAppContext context = new MVCSchoolAppContext();
+           context.Set<T>().Add(model);
+        }
 
-            context.Set<T>().Add(model);
-            context.SaveChanges();
+        public static void Delete<T>(int id) where T:class
+        {
+            var model = context.Set<T>().Find(id);
+            context.Set<T>().Remove(model);
         }
     }
 }
