@@ -127,6 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="DataAccess\DataAccess.cs" />
@@ -139,8 +140,31 @@
     <Compile Include="Migrations\202102021053157_Initial.designer.cs">
       <DependentUpon>202102021053157_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102051134326_CourseModel.cs" />
+    <Compile Include="Migrations\202102051134326_CourseModel.designer.cs">
+      <DependentUpon>202102051134326_CourseModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102051159406_EnrollmentModel.cs" />
+    <Compile Include="Migrations\202102051159406_EnrollmentModel.designer.cs">
+      <DependentUpon>202102051159406_EnrollmentModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102051627091_TeacherModel.cs" />
+    <Compile Include="Migrations\202102051627091_TeacherModel.designer.cs">
+      <DependentUpon>202102051627091_TeacherModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102051635105_OneToOne.cs" />
+    <Compile Include="Migrations\202102051635105_OneToOne.designer.cs">
+      <DependentUpon>202102051635105_OneToOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102051713265_SomeFixes.cs" />
+    <Compile Include="Migrations\202102051713265_SomeFixes.designer.cs">
+      <DependentUpon>202102051713265_SomeFixes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Enrollment.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +203,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Student\GetStudents.cshtml" />
     <Content Include="Views\Student\LoadForm.cshtml" />
+    <Content Include="Views\Course\GetCourses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -199,6 +224,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202102021053157_Initial.resx">
       <DependentUpon>202102021053157_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102051134326_CourseModel.resx">
+      <DependentUpon>202102051134326_CourseModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102051159406_EnrollmentModel.resx">
+      <DependentUpon>202102051159406_EnrollmentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102051627091_TeacherModel.resx">
+      <DependentUpon>202102051627091_TeacherModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102051635105_OneToOne.resx">
+      <DependentUpon>202102051635105_OneToOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102051713265_SomeFixes.resx">
+      <DependentUpon>202102051713265_SomeFixes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

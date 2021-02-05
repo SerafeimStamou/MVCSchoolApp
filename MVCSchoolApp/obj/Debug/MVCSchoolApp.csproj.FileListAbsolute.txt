@@ -83,3 +83,8 @@ C:\MVCSchoolApp\MVCSchoolApp\bin\EntityFramework.xml
 C:\MVCSchoolApp\MVCSchoolApp\bin\EntityFramework.SqlServer.xml
 C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.Migrations.Initial.resources
 C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.csproj.GenerateResource.cache
+C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.Migrations.CourseModel.resources
+C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.Migrations.EnrollmentModel.resources
+C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.Migrations.TeacherModel.resources
+C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.Migrations.OneToOne.resources
+C:\MVCSchoolApp\MVCSchoolApp\obj\Debug\MVCSchoolApp.Migrations.SomeFixes.resources

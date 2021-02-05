@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MVCSchoolApp.Models
@@ -16,6 +17,9 @@ namespace MVCSchoolApp.Models
         [MaxLength(50, ErrorMessage = "Last name must not be greater than 50 characters")]
         [MinLength(3, ErrorMessage = "Last name must be at least 3 characters long")]
         public string LastName { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:dd-MM-yyyy}",ApplyFormatInEditMode =true)]
         public DateTime DateOfBirth { get; set; }
 
         [DataType(DataType.EmailAddress)]
@@ -23,5 +27,7 @@ namespace MVCSchoolApp.Models
 
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
+
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
     }
 }

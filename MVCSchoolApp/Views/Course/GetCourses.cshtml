@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MVCSchoolApp.Models.Course>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Hours per Week</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Title</td>
+                <td>@course.HoursPerWeek</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
