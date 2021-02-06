@@ -130,8 +130,10 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="DataAccess\DataAccess.cs" />
     <Compile Include="DataAccess\MVCSchoolAppContext.cs" />
+    <Compile Include="DataAccess\StudentRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -204,6 +206,8 @@
     <Content Include="Views\Student\GetStudents.cshtml" />
     <Content Include="Views\Student\LoadForm.cshtml" />
     <Content Include="Views\Course\GetCourses.cshtml" />
+    <Content Include="Views\Teacher\GetTeachers.cshtml" />
+    <Content Include="Views\Teacher\LoadForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

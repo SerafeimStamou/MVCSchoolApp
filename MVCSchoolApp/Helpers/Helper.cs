@@ -6,9 +6,12 @@ namespace MVCSchoolApp.Helpers
     {
         public static string[] LoadStudentProperties()
         {
-            string[] studentProperties;
+          return  new string[] { "FirstName", "LastName", "DateOfBirth", "Email", "Phone" };
+        }
 
-            return studentProperties = new string[] { "FirstName", "LastName", "DateOfBirth", "Email", "Phone" };
+        public static string[] LoadTeacherProperties()
+        { 
+          return  new string[] { "FirstName", "LastName", "Email", "Phone" };
         }
     }
 }

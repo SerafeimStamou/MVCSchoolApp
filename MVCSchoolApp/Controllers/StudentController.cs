@@ -1,6 +1,7 @@
 ﻿using MVCSchoolApp.Models;
 using System.Web.Mvc;
 using static MVCSchoolApp.DataAccess.DataAccess;
+using static MVCSchoolApp.DataAccess.StudentRepository;
 using static MVCSchoolApp.Helpers.Helper;
 
 
@@ -18,7 +19,7 @@ namespace MVCSchoolApp.Controllers
 
         public ActionResult LoadForm(int? id)
         {
-            var studentById = context.Students.Find(id);
+            var studentById = SearchById(id);
 
             if (studentById is null)
                 return View(student);
@@ -37,7 +38,7 @@ namespace MVCSchoolApp.Controllers
             }
             else
             {
-                var studentFromDb = context.Students.Find(formData.ID);
+                var studentFromDb = SearchById(formData.ID);
 
                 UpdateModel(studentFromDb, "",LoadStudentProperties());
             }
@@ -53,6 +54,12 @@ namespace MVCSchoolApp.Controllers
             context.SaveChanges();
 
             return RedirectToAction("GetStudents");
+        }
+
+        public ActionResult GetResults(string searchParameter)
+        {
+            var results = Search(searchParameter);
+            return View("GetStudents", results);
         }
     }
 }

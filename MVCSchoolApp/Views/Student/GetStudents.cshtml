@@ -1,6 +1,15 @@
 ﻿@model IEnumerable<MVCSchoolApp.Models.Student>
 
-<table class="table table-bordered">
+ @using (Html.BeginForm("GetResults","Student"))
+  {
+    <div style="margin-top:10px;">
+        @Html.TextBox("SearchParameter")
+        <input type="submit" value="Search"/>
+    </div>
+  }
+
+
+<table class="table table-bordered" style="margin-top:10px;">
     <thead>
         <tr>
             <th>FirstName</th>
