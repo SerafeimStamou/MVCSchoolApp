@@ -1,15 +1,17 @@
-﻿using MVCSchoolApp.Models;
+﻿using MVCSchoolApp.DataAccess;
+using MVCSchoolApp.Models;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using static MVCSchoolApp.DataAccess.DataAccess;
 
 namespace MVCSchoolApp.Controllers
 {
     public class CourseController : Controller
     {
-        Course course = new Course();
-        public ActionResult GetCourses()
+        DbConnection dbConn = new DbConnection();
+
+        public async Task<ActionResult> GetCourses()
         {
-            var courses = Read(course);
+            var courses = await dbConn.Read<Course>();
             return View(courses);
         }
     }

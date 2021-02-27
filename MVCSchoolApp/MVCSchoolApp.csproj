@@ -131,7 +131,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
-    <Compile Include="DataAccess\DataAccess.cs" />
+    <Compile Include="DataAccess\DbConnection.cs" />
     <Compile Include="DataAccess\MVCSchoolAppContext.cs" />
     <Compile Include="DataAccess\StudentRepository.cs" />
     <Compile Include="Global.asax.cs">

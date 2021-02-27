@@ -1,26 +1,27 @@
-﻿using MVCSchoolApp.Models;
+﻿using MVCSchoolApp.DataAccess;
+using MVCSchoolApp.Models;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using static MVCSchoolApp.DataAccess.DataAccess;
 using static MVCSchoolApp.Helpers.Helper;
 
 namespace MVCSchoolApp.Controllers
 {
     public class TeacherController : Controller
     {
-        Teacher teacher = new Teacher();
+        DbConnection dbConn = new DbConnection();
 
-        public ActionResult GetTeachers()
+        public async Task<ActionResult> GetTeachers()
         {
-            var teachers = Read(teacher);
+            var teachers = await dbConn.Read<Teacher>();
             return View(teachers);
         }
 
-        public ActionResult LoadForm(int? id)
+        public async Task<ActionResult> LoadForm(int? id)
         {
-            var teacherById = context.Teachers.Find(id);
+            var teacherById = await dbConn.SearchById<Teacher>(id);
 
             if (teacherById is null)
-                return View(teacher);
+                return View(new Teacher{ });
             else
                 return View(teacherById);
 
@@ -28,29 +29,20 @@ namespace MVCSchoolApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Insert(Teacher formData)
+        public async Task<ActionResult> Insert(Teacher formData)
         {
             if (formData.ID is 0)
             {
-                Create(formData);
+                await dbConn.Create(formData);
             }
-            else
-            {
-                var teacherFromDb = context.Teachers.Find(formData.ID);
-
-                UpdateModel(teacherFromDb, "", LoadTeacherProperties());
-            }
-
-            context.SaveChanges();
-
+  
             return RedirectToAction("GetTeachers");
         }
 
-        public ActionResult Remove(int id)
+        public async Task<ActionResult> Remove(int id)
         {
-            Delete<Teacher>(id);
-            context.SaveChanges();
-
+            await dbConn.Delete<Teacher>(id);
+            
             return RedirectToAction("GetTeachers");
         }
     }

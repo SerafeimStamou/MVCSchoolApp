@@ -1,28 +1,30 @@
-﻿using MVCSchoolApp.Models;
+﻿using MVCSchoolApp.DataAccess;
+using MVCSchoolApp.Helpers;
+using MVCSchoolApp.Models;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using static MVCSchoolApp.DataAccess.DataAccess;
 using static MVCSchoolApp.DataAccess.StudentRepository;
 using static MVCSchoolApp.Helpers.Helper;
-
 
 namespace MVCSchoolApp.Controllers
 {
     public class StudentController : Controller
     {
-        Student student = new Student();
+        DbConnection dbConn = new DbConnection();
 
-        public ActionResult GetStudents()
+        public async Task<ActionResult> GetStudents()
         {
-            var students = Read(student);
+            var students = await dbConn.Read<Student>();
+
             return View(students);
         }
 
-        public ActionResult LoadForm(int? id)
+        public async Task<ActionResult> LoadForm(int? id)
         {
-            var studentById = SearchById(id);
+            var studentById = await dbConn.SearchById<Student>(id);
 
             if (studentById is null)
-                return View(student);
+                return View(new Student { });
             else
                 return View(studentById);
 
@@ -30,29 +32,20 @@ namespace MVCSchoolApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Insert(Student formData)
+        public async Task<ActionResult> Insert(Student formData)
         {
             if (formData.ID is 0)
             {
-                Create(formData);
+              await dbConn.Create(formData);
             }
-            else
-            {
-                var studentFromDb = SearchById(formData.ID);
-
-                UpdateModel(studentFromDb, "",LoadStudentProperties());
-            }
-
-            context.SaveChanges();
-
+            
             return RedirectToAction("GetStudents");
         }
 
-        public ActionResult Remove(int id)
+        public async Task<ActionResult> Remove(int id)
         {
-            Delete<Student>(id);
-            context.SaveChanges();
-
+            await dbConn.Delete<Student>(id);
+       
             return RedirectToAction("GetStudents");
         }
 
