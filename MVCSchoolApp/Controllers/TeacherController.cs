@@ -1,8 +1,8 @@
 ﻿using MVCSchoolApp.DataAccess;
 using MVCSchoolApp.Models;
+using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using static MVCSchoolApp.Helpers.Helper;
 
 namespace MVCSchoolApp.Controllers
 {
@@ -12,18 +12,32 @@ namespace MVCSchoolApp.Controllers
 
         public async Task<ActionResult> GetTeachers()
         {
-            var teachers = await dbConn.Read<Teacher>();
-            return View(teachers);
+            try
+            {
+                var teachers = await dbConn.Read<Teacher>();
+                return View(teachers);
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("GetSqlError", "Error", new { message = ex.Message });
+            }
         }
 
         public async Task<ActionResult> LoadForm(int? id)
         {
-            var teacherById = await dbConn.SearchById<Teacher>(id);
+            try
+            {
+                var teacherById = await dbConn.SearchById<Teacher>(id);
 
-            if (teacherById is null)
-                return View(new Teacher{ });
-            else
-                return View(teacherById);
+                if (teacherById is null)
+                    return View(new Teacher { });
+                else
+                    return View(teacherById);
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("SearchSqlError", "Error", new { message = ex.Message });
+            }
 
         }
 
@@ -31,19 +45,32 @@ namespace MVCSchoolApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Insert(Teacher formData)
         {
-            if (formData.ID is 0)
+            try
             {
-                await dbConn.Create(formData);
+                if (formData.ID == 0)
+                    await dbConn.Create(formData);
+                else
+                    await dbConn.Update(formData, formData.ID);
+
+                return RedirectToAction("GetTeachers");
             }
-  
-            return RedirectToAction("GetTeachers");
+            catch (Exception ex)
+            {
+                return RedirectToAction("InsertSqlError", "Error", new { message = ex.Message });
+            }
         }
 
         public async Task<ActionResult> Remove(int id)
         {
-            await dbConn.Delete<Teacher>(id);
-            
-            return RedirectToAction("GetTeachers");
+            try
+            {
+                await dbConn.Delete<Teacher>(id);
+                return RedirectToAction("GetTeachers");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("RemoveSqlError", "Error", new { message = ex.Message });
+            }
         }
     }
 }

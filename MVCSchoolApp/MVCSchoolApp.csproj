@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
@@ -137,7 +138,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Migrations\202102021053157_Initial.cs" />
     <Compile Include="Migrations\202102021053157_Initial.designer.cs">
       <DependentUpon>202102021053157_Initial.cs</DependentUpon>
@@ -208,6 +208,10 @@
     <Content Include="Views\Course\GetCourses.cshtml" />
     <Content Include="Views\Teacher\GetTeachers.cshtml" />
     <Content Include="Views\Teacher\LoadForm.cshtml" />
+    <Content Include="Views\Error\GetSqlError.cshtml" />
+    <Content Include="Views\Error\InsertSqlError.cshtml" />
+    <Content Include="Views\Error\RemoveSqlError.cshtml" />
+    <Content Include="Views\Error\SearchSqlError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
